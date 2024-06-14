@@ -15,13 +15,25 @@ function MovieList(props) {
             })
         }
     }
+
+    const toggleWatchedList = (movieID, isRemove) => {
+        if(isRemove){
+            props.handleSetwatchedMoviesList((prev) =>{
+                return props.likedMoviesList.filter((curMovieID) => curMovieID != movieID)
+            })
+        }else{
+            props.handleSetwatchedMoviesList((prev) =>{
+                return [...props.likedMoviesList, movieID]
+            })
+        }
+    }
     return (
         <div className="movielist">
             {props.movieData &&
                 props.movieData.map((movie) => (
-                // <div>{e.id}</div>)               
                         <MovieCard
                             key={movie.id}
+                            id={movie.id}
                             name={movie.title}
                             image={movie.poster_path != null ? 'https://image.tmdb.org/t/p/w1280' + movie.poster_path : 'https://www.pngmart.com/files/22/Carl-Jimmy-Neutron-PNG-File.png'}
                             voteRating={movie.vote_average}
@@ -30,12 +42,13 @@ function MovieList(props) {
                             backdropImage = {movie.backdrop_path}
                             isLiked={props.likedMoviesList.includes(movie.id)}
                             toggleLikedList={(isRemove) => {toggleLikeList(movie.id, isRemove)}}
+                            isWatched={props.watchedMoviesList.includes(movie.id)}
+                            toggleWatchedList={(isRemove) => {toggleWatchedList(movie.id, isRemove)}}
                         />
                     ))
                 }
         </div>
     )
 }
-
 export default MovieList
 

@@ -12,13 +12,14 @@
     background-color: rgb(157, 15, 79,.15);
     box-shadow: inset 0 0 2000px  rgb(149, 64, 102);
     backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
 }
-
 .moviecard:hover{
     display: flex;
     background-color:rgb(115, 10, 64) ;
+    box-shadow: 1px 1px 5px gold;
+    transform: scale(1.03);
 }
-
 #movieimage{
     display: flex;
     width: 200px;  
@@ -32,7 +33,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
     text-align:center;
-    /* text-wrap: nowrap; */
     margin-bottom: 10px;
     font-size: 1.5rem;
     color: beige;
@@ -40,9 +40,7 @@
 .movie-rating{
     font-size: 1rem;
     color: beige;
-
 }
-
 .movieButton {
     display: flex;
     gap: .4em;
